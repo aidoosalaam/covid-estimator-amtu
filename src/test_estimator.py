@@ -1,5 +1,5 @@
 import unittest
-from estimator import Impact,SevereImpact
+from .estimator import Impact,SevereImpact
 
 class TestEstimator(unittest.TestCase):
 
