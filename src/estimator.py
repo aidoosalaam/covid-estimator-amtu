@@ -91,3 +91,31 @@ class SevereImpact(Impact):
     def dollarsInFlight(self):
         dollarsInFlight = math.trunc((self.infectionByRequestedTime() * self.region_avgDailyIncomePopulation * self.region_avgDailyIncomeInUSD)// self.timeToElapse)
         return dollarsInFlight
+
+
+def covidEstimator(data):
+    impact = Impact(data)
+    severe_impact = SevereImpact(data)
+    data = {
+            "data" : data,
+            "Impact":{
+                "currentlyInfected" : impact.infectionByRequestedTime(),
+                "severeCasesByRequestedTime" : impact.severeCasesByRequestedTime(),
+                "hospitalBedsByRequestedTime" : impact.availableHospitalBedsByRequestedTime(),
+                "casesForICUByRequestedTime" : impact.casesForICUByRequestedTime(),
+                "casesForVentilatorsByRequestedTime" : impact.casesForVentilatorsByRequestedTime(),
+                "dollarsInFlight" : impact.dollarsInFlight()
+            },
+            "SevereImpact":{
+                "currentlyInfected" : severe_impact.infectionByRequestedTime(),
+                "severeCasesByRequestedTime" : severe_impact.severeCasesByRequestedTime(),
+                "hospitalBedsByRequestedTime" : severe_impact.availableHospitalBedsByRequestedTime(),
+                "casesForICUByRequestedTime" : severe_impact.casesForICUByRequestedTime(),
+                "casesForVentilatorsByRequestedTime" : severe_impact.casesForVentilatorsByRequestedTime(),
+                "dollarsInFlight" : severe_impact.dollarsInFlight()
+            }
+    }
+    return data
+
+def estimator(data):
+    return covidEstimator(data)
