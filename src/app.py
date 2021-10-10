@@ -1,6 +1,6 @@
 import time, datetime
 import logging
-from .estimator import Impact,SevereImpact
+from estimator import Impact,SevereImpact
 from dicttoxml import dicttoxml
 from flask import Flask,request,jsonify,Response,g
 
