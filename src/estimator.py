@@ -33,7 +33,7 @@ class Impact(object):
         infection_by_req_time = math.trunc(self.covid19ImpactEstimator() * (2**power))
         return infection_by_req_time
 
-    def severeCasesByRequestedTime(self):
+    def severeCasesByRequestedTime(self): 
         return math.trunc(0.15 * self.infectionByRequestedTime())
 
     def availableHospitalBedsByRequestedTime(self):
